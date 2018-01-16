@@ -119,50 +119,65 @@ function isPrime(number) {
 // console.log(sumOfNPrimes(3))
 
 
- function titleize (names, callback) {
-   let titleized = names.map(name => `Mx. ${name} Jingleheimer Schmidt`);
-   callback(titleized);
- }
 
- titleize(['Mary', 'Brian', 'Leo'], (names) => {
-   names.forEach(name => console.log(name));
- });
+function titleize(names, cb) {
+  let titleized = names.map (name => `Mx. ${name} Jingleheimer Schmidt`);
+  cb(titleized);
+}
+//
+// titleize(["Mary", "Brian", "Leo", "James", "Joey"], (names) => {
+//   names.forEach(name => console.log(name));
+// });
 
- let ellie = new Elephant("Ellie", 185, ["giving human friends a ride", "playing hide and seek"]);
- let charlie = new Elephant("Charlie", 200, ["painting pictures", "spraying water for a slip and slide"]);
- let kate = new Elephant("Kate", 234, ["writing letters", "stealing peanuts"]);
- let micah = new Elephant("Micah", 143, ["trotting", "playing tic tac toe", "doing elephant ballet"]);
+function plusFive(nums, cb) {
+  let fived = nums.map (num => num + 5);
+  cb(fived);
+}
 
- let herd = [ellie, charlie, kate, micah];
+plusFive([1,2,3,4], (nums) => {
+  nums.forEach(num => console.log(num));
+});
 
 
-function Elephant(name, height, tricks) {
+let ellie = new Elephant("Ellie", 185, ["giving human friends a ride", "playing hide and seek"]);
+let charlie = new Elephant("Charlie", 200, ["painting pictures", "spraying water for a slip and slide"]);
+let kate = new Elephant("Kate", 234, ["writing letters", "stealing peanuts"]);
+let micah = new Elephant("Micah", 143, ["trotting", "playing tic tac toe", "doing elephant ballet"]);
+
+let herd = [ellie, charlie, kate, micah];
+
+
+function Elephant(name,height,tricks) {
   this.name = name;
   this.height = height;
   this.tricks = tricks;
-}
 
-Elephant.prototype.trumpet = function () {
-  console.log(`${this.name} the elephant goes 'phrRRRRRRRRRRR!!!!!!!'`);
-};
 
-Elephant.prototype.grow = function () {
-  this.height = this.height + 12;
-};
+  Elephant.prototype.trumpet = function() {
+    console.log(`${this.name} the elephant goes 'phrRRRRRRRRRRR!!!!!!!'`);
+  };
 
-Elephant.prototype.addTrick = function (trick) {
-  this.tricks.push(trick);
-};
+  Elephant.prototype.grow = function() {
+    this.height += 12;
+  };
 
-Elephant.prototype.play = function () {
-  trickIndex = Math.floor(Math.random() * this.tricks.length);
-  console.log(`${this.name} is ${this.tricks[trickIndex]}!`);
-};
+  Elephant.prototype.addTrick = function(trick) {
+    this.tricks.push(trick);
+  };
 
-// Phase III - Function Invocation
 
-Elephant.paradeHelper = function (elephant) {
+  Elephant.paradeHelper = function (elephant) {
   console.log(`${elephant.name} is trotting by!`);
 };
+}
 
-ellie.trumpet();
+herd.forEach(function(elephant) {
+  Elephant.paradeHelper(elephant);
+});
+
+function dinerBreakfast() {
+  let order = "i'd like cheesy eggs.";
+  console.log(order);
+
+  return function (food) {}
+}
