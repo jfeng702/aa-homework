@@ -1,16 +1,17 @@
-var path = require('path');
+"use strict";
+const path = require('path');
 
 module.exports = {
   context: __dirname,
-  entry: "./app.jsx",
+  entry: "./frontend/entry.jsx",
   output: {
-    path: path.resolve(__dirname),
+    path: path.resolve(__dirname),  
     filename: "bundle.js"
   },
   module: {
     loaders: [
       {
-        test: [/\.jsx?$/, /\.js?$/],
+        test: [/\.jsx?$/],
         exclude: /node_modules/,
         loader: 'babel-loader',
         query: {
@@ -19,8 +20,8 @@ module.exports = {
       }
     ]
   },
-  devtool: 'source-map',
+  devtool: 'source-maps',
   resolve: {
-    extensions: [".js", '.jsx', '*']
+    extensions: [".js", '.jsx', '*'],
   }
 };
